@@ -1,5 +1,4 @@
 import 'package:basicflutter/page_login.dart';
-import 'package:basicflutter/page_register.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatefulWidget {
@@ -34,13 +33,14 @@ class _AccountPageState extends State<AccountPage> {
               ),
               SizedBox(
                 width: double.infinity,
+                height: 60,
                 child: ElevatedButton.icon(
                   icon: Icon(
                     Icons.login,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
-                  label: Text("LOGIN",
-                      style: TextStyle(fontSize: 16, color: Colors.white)),
+                  label: Text("Sign in with Google",
+                      style: TextStyle(fontSize: 16, color: Colors.black)),
                   onPressed: () {
                     Navigator.push(
                         context, //ลิ้งไปยังหน้าต่อไปยังหน้า PageLogin
@@ -49,26 +49,7 @@ class _AccountPageState extends State<AccountPage> {
                     }));
                   },
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(30, 194, 165, 100),
-                      minimumSize: Size(222, 48)),
-                ),
-              ),
-              const SizedBox(),
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: const TextStyle(fontSize: 14),
-                ),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return PageRegister();
-                  }));
-                },
-                child: const Text(
-                  'Create account',
-                  style: TextStyle(
-                      color: Color.fromRGBO(19, 143, 121, 100),
-                      fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.underline),
+                      primary: Colors.white, minimumSize: Size(222, 48)),
                 ),
               ),
             ],
