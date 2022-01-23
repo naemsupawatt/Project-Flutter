@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types
 
 import 'package:basicflutter/home.dart';
-import 'package:basicflutter/page_accout.dart';
+import 'package:basicflutter/page_account.dart';
 import 'package:basicflutter/page_notify.dart';
 import 'package:basicflutter/page_search.dart';
 import 'package:basicflutter/page_setting.dart';

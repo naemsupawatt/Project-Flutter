@@ -1,5 +1,12 @@
 import 'package:basicflutter/page_login.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'googleauth.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
+final GoogleSignIn googleSignIn = GoogleSignIn();
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -41,12 +48,19 @@ class _AccountPageState extends State<AccountPage> {
                   ),
                   label: Text("Sign in with Google",
                       style: TextStyle(fontSize: 16, color: Colors.black)),
-                  onPressed: () {
-                    Navigator.push(
-                        context, //ลิ้งไปยังหน้าต่อไปยังหน้า PageLogin
-                        MaterialPageRoute(builder: (context) {
-                      return PageLogin();
-                    }));
+                  onPressed: () async {
+                    signInWithGoogle().then((result) {
+                      if (result != null) {
+                        print(result);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return PageLogin();
+                            },
+                          ),
+                        );
+                      }
+                    });
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Colors.white, minimumSize: Size(222, 48)),
