@@ -1,3 +1,4 @@
+import 'package:basicflutter/addUser.dart';
 import 'package:basicflutter/page_login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -30,28 +31,41 @@ class _AccountPageState extends State<AccountPage> {
           //ป้องกัน button overflow
           child: Column(
             children: [
-              Image.asset(
-                "assets/profile-user.png",
-                width: 49,
-                height: 49,
-              ),
+              //
               SizedBox(
-                height: 20,
+                height: 40,
               ),
               SizedBox(
                 width: double.infinity,
                 height: 60,
-                child: ElevatedButton.icon(
-                  icon: Icon(
-                    Icons.login,
-                    color: Colors.black,
+                child: ElevatedButton(
+                  child: Row(
+                    children: [
+                      Text("......."),
+                      Image.asset(
+                        "image/logo_google.png",
+                        width: 30,
+                      ),
+                      Text("...."),
+                      Text("Sign in with Google",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
+                    ],
                   ),
-                  label: Text("Sign in with Google",
-                      style: TextStyle(fontSize: 16, color: Colors.black)),
                   onPressed: () async {
                     signInWithGoogle().then((result) {
                       if (result != null) {
                         print(result);
+                        addUser(
+                            Name: name,
+                            Email: email,
+                            UrlImage: imageUrl,
+                            Birthday: DateTime.now(),
+                            Message: "",
+                            Sex: "",
+                            Name2: "",
+                            Time: DateTime.now());
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {

@@ -1,3 +1,4 @@
+import 'package:basicflutter/page_map.dart';
 import 'package:basicflutter/page_qr.dart';
 import 'package:flutter/material.dart';
 
@@ -13,193 +14,215 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 60,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Stack(
+        children: [
+          Align(
+              alignment: Alignment.bottomRight,
+              child: Image.asset(
+                "image/endpage2.png",
+                height: MediaQuery.of(context).size.height * .2,
+              )),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
               children: [
-                Image.asset(
-                  'assets/Frame1.png',
-
-                  width: 200,
-                  height: 50,
-                  //color: Colors.black.withOpacity(.4),
+                SizedBox(
+                  height: 60,
                 ),
-                InkWell(
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => QrPage())),
-                  child: Icon(Icons.qr_code_scanner,
-                      size: 35, color: Color.fromRGBO(22, 150, 127, 1)),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Column(
-              children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color.fromRGBO(30, 194, 165, 1),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        height: 148,
-                        child: Padding(
-                          padding:
-                              EdgeInsets.only(left: 10, bottom: 10, top: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Image.asset(
-                                'assets/logo1.png',
-                                fit: BoxFit.cover,
-                                height: 56,
-                              ),
-                              Text(
-                                "ตั้งค่าเตือนการใช้ยา",
-                                style: TextStyle(
-                                  color: Color.fromRGBO(22, 150, 127, 1),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    Image.asset(
+                      'assets/Frame1.png',
+
+                      width: 200,
+                      height: 50,
+                      //color: Colors.black.withOpacity(.4),
                     ),
-                    SizedBox(
-                      width: 10,
+                    InkWell(
+                      onTap: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => QrPage())),
+                      child: Icon(Icons.qr_code_scanner,
+                          size: 35, color: Color.fromRGBO(22, 150, 127, 1)),
                     ),
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color.fromRGBO(30, 194, 165, 1),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        height: 148,
-                        child: Padding(
-                          padding:
-                              EdgeInsets.only(left: 10, bottom: 10, top: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Image.asset(
-                                'assets/logo2.png',
-                                fit: BoxFit.cover,
-                                height: 56,
-                              ),
-                              Text(
-                                "ตำแหน่งโรงพยาบาล",
-                                style: TextStyle(
-                                  color: Color.fromRGBO(22, 150, 127, 1),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
                   ],
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 30,
                 ),
-                Row(
+                Column(
                   children: [
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color.fromRGBO(30, 194, 165, 1),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        height: 148,
-                        child: Padding(
-                          padding:
-                              EdgeInsets.only(left: 10, bottom: 10, top: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Image.asset(
-                                'assets/logo3.png',
-                                fit: BoxFit.cover,
-                                height: 56,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Color.fromRGBO(30, 194, 165, 1),
+                                width: 2,
                               ),
-                              Text(
-                                "สาระเกี่ยวกับยา",
-                                style: TextStyle(
-                                  color: Color.fromRGBO(22, 150, 127, 1),
-                                  fontWeight: FontWeight.bold,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            height: 148,
+                            child: Padding(
+                              padding:
+                                  EdgeInsets.only(left: 10, bottom: 10, top: 5),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Image.asset(
+                                    'assets/logo1.png',
+                                    fit: BoxFit.cover,
+                                    height: 56,
+                                  ),
+                                  Text(
+                                    "ตั้งค่าเตือนการใช้ยา",
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(22, 150, 127, 1),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return PageMap();
+                              }));
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Color.fromRGBO(30, 194, 165, 1),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              height: 148,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: 10, bottom: 10, top: 5),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Image.asset(
+                                      'assets/logo2.png',
+                                      fit: BoxFit.cover,
+                                      height: 56,
+                                    ),
+                                    Text(
+                                      "ตำแหน่งโรงพยาบาล",
+                                      style: TextStyle(
+                                        color: Color.fromRGBO(22, 150, 127, 1),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
+                        )
+                      ],
                     ),
                     SizedBox(
-                      width: 10,
+                      height: 10,
                     ),
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color.fromRGBO(218, 55, 55, 1),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        height: 148,
-                        child: Padding(
-                          padding:
-                              EdgeInsets.only(left: 10, bottom: 10, top: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Image.asset(
-                                'assets/logo4.png',
-                                fit: BoxFit.cover,
-                                height: 56,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Color.fromRGBO(30, 194, 165, 1),
+                                width: 2,
                               ),
-                              Text(
-                                "ฉุกเฉิน",
-                                style: TextStyle(
-                                  color: Color.fromRGBO(218, 55, 55, 1),
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            height: 148,
+                            child: Padding(
+                              padding:
+                                  EdgeInsets.only(left: 10, bottom: 10, top: 5),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Image.asset(
+                                    'assets/logo3.png',
+                                    fit: BoxFit.cover,
+                                    height: 56,
+                                  ),
+                                  Text(
+                                    "สาระเกี่ยวกับยา",
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(22, 150, 127, 1),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Color.fromRGBO(218, 55, 55, 1),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            height: 148,
+                            child: Padding(
+                              padding:
+                                  EdgeInsets.only(left: 10, bottom: 10, top: 5),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Image.asset(
+                                    'assets/logo4.png',
+                                    fit: BoxFit.cover,
+                                    height: 56,
+                                  ),
+                                  Text(
+                                    "ฉุกเฉิน",
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(218, 55, 55, 1),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
                     )
                   ],
                 )
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
