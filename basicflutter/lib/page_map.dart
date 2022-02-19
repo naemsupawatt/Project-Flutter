@@ -16,8 +16,7 @@ class _PageMapState extends State<PageMap> {
           children: [
             WebView(
               javascriptMode: JavascriptMode.unrestricted,
-              initialUrl:
-                  'https://www.google.com/maps?q=%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5%E0%B9%83%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%89%E0%B8%B1%E0%B8%99&rlz=1C1CHBD_enTH954TH954&um=1&ie=UTF-8&sa=X&ved=2ahUKEwivz8jP9uj1AhWRyzgGHQPUDkcQ_AUoAXoECAIQAw',
+              initialUrl: 'https://www.google.com/maps/search/hospital/',
             ),
             Container(
               width: double.infinity,
@@ -25,7 +24,13 @@ class _PageMapState extends State<PageMap> {
               color: Colors.white,
               child: AppBar(
                 centerTitle: true,
-                title: Text("ตำแหน่งโรงพยาบาล"),
+                title: Text(
+                  "ตำแหน่งโรงพยาบาล",
+                  style: TextStyle(
+                    fontFamily: 'Prompt',
+                    fontSize: 18,
+                  ),
+                ),
                 backgroundColor: Color.fromRGBO(30, 194, 165, 100),
               ),
             ),

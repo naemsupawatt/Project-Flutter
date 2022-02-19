@@ -16,7 +16,13 @@ class _QrPageState extends State<QrPage> {
       backgroundColor: Color.fromRGBO(30, 194, 165, 1),
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('สแกนคิวอาร์โค้ดซองยา'),
+        title: const Text(
+          'สแกนคิวอาร์โค้ดซองยา',
+          style: TextStyle(
+            fontFamily: 'Prompt',
+            fontSize: 18,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(30, 194, 165, 100),
         leading: InkWell(
             onTap: () => Navigator.pop(

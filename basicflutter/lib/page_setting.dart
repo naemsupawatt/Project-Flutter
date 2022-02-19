@@ -1,4 +1,10 @@
+import 'package:basicflutter/page_about.dart';
+import 'package:basicflutter/page_login.dart';
+import 'package:basicflutter/page_notify.dart';
+import 'package:basicflutter/page_policy.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:ionicons/ionicons.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -14,23 +20,92 @@ class _SettingPageState extends State<SettingPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text("ตั้งค่า"),
+        title: Text(
+          "ตั้งค่า",
+          style: TextStyle(
+            fontFamily: 'Prompt',
+            fontSize: 18,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(30, 194, 165, 100),
       ),
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            "This is Text Widget",
-            style: TextStyle(fontSize: 20, color: Colors.red),
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Center(
+          child: ListView(
+            children: [
+              Card(
+                child: ListTile(
+                    leading: Icon(
+                      Icons.person_outline,
+                      size: 28,
+                    ),
+                    title: Text(
+                      "ข้อมูลของฉัน",
+                      style: TextStyle(
+                        fontFamily: 'Prompt',
+                        fontSize: 16,
+                      ),
+                    ),
+                    tileColor: Colors.white,
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => PageLogin()))),
+              ),
+              Card(
+                child: ListTile(
+                    leading: Icon(
+                      Icons.notifications_outlined,
+                      size: 28,
+                    ),
+                    title: Text(
+                      "การแจ้งเตือน",
+                      style: TextStyle(
+                        fontFamily: 'Prompt',
+                        fontSize: 16,
+                      ),
+                    ),
+                    tileColor: Colors.white,
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => NotifyPage()))),
+              ),
+              Card(
+                child: ListTile(
+                    leading: Icon(
+                      Ionicons.alert_circle_outline,
+                      size: 28,
+                    ),
+                    title: Text(
+                      "เกี่ยวกับโปรแกรม",
+                      style: TextStyle(
+                        fontFamily: 'Prompt',
+                        fontSize: 16,
+                      ),
+                    ),
+                    tileColor: Colors.white,
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => PageAbout()))),
+              ),
+              Card(
+                child: ListTile(
+                    leading: Icon(
+                      Icons.lock_outline,
+                      size: 28,
+                    ),
+                    title: Text(
+                      "นโยบายความเป็นส่วนตัว",
+                      style: TextStyle(
+                        fontFamily: 'Prompt',
+                        fontSize: 16,
+                      ),
+                    ),
+                    tileColor: Colors.white,
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => PagePolicy()))),
+              ),
+            ],
           ),
-          Image(
-              image: NetworkImage(
-                  'https://cdn.pixabay.com/photo/2019/12/08/19/50/winter-4682051_960_720.jpg')),
-          Text("This is two widget")
-        ],
-      )),
+        ),
+      ),
     );
   }
 }

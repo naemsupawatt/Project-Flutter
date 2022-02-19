@@ -1,4 +1,4 @@
-import 'package:basicflutter/addUser.dart';
+import 'package:basicflutter/ConnectFirebase.dart';
 import 'package:basicflutter/page_login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -22,7 +22,13 @@ class _AccountPageState extends State<AccountPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text("เข้าสู่ระบบ"),
+        title: Text(
+          "เข้าสู่ระบบ",
+          style: TextStyle(
+            fontFamily: 'Prompt',
+            fontSize: 18,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(30, 194, 165, 100),
       ),
       body: Padding(
@@ -49,32 +55,40 @@ class _AccountPageState extends State<AccountPage> {
                       Text("...."),
                       Text("Sign in with Google",
                           style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold)),
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Prompt',
+                            fontSize: 14,
+                          )),
                     ],
                   ),
                   onPressed: () async {
-                    signInWithGoogle().then((result) {
-                      if (result != null) {
-                        print(result);
-                        addUser(
-                            Name: name,
-                            Email: email,
-                            UrlImage: imageUrl,
-                            Birthday: DateTime.now(),
-                            Message: "",
-                            Sex: "",
-                            Name2: "",
-                            Time: DateTime.now());
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return PageLogin();
-                            },
-                          ),
-                        );
-                      }
-                    });
+                    try {
+                      signInWithGoogle().then((result) {
+                        if (result != null) {
+                          print(result);
+                          ConnectFirebase.addUser(
+                              Name: name,
+                              Email: email,
+                              UrlImage: imageUrl,
+                              Birthday: DateTime.now(),
+                              Message: "",
+                              Sex: "",
+                              Name2: "",
+                              Time: DateTime.now());
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return PageLogin();
+                              },
+                            ),
+                          );
+                        }
+                      });
+                    } catch (e) {
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (context) => PageLogin()));
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Colors.white, minimumSize: Size(222, 48)),

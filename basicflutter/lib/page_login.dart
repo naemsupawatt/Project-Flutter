@@ -16,7 +16,13 @@ class _PageLoginState extends State<PageLogin> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("ข้อมูลส่วนตัว"),
+        title: Text(
+          "ข้อมูลส่วนตัว",
+          style: TextStyle(
+            fontFamily: 'Prompt',
+            fontSize: 15,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(30, 194, 165, 100),
       ),
       body: Padding(
@@ -44,8 +50,12 @@ class _PageLoginState extends State<PageLogin> {
                 height: 20,
               ),
               Text(
-                "ชื่อ - นามสกุล                             " + name,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                "ชื่อ - นามสกุล                " + name,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Prompt',
+                  fontSize: 15,
+                ),
               ),
               //Text(email),
               //Text(userid),
@@ -78,6 +88,8 @@ class _PageLoginState extends State<PageLogin> {
                         "LOGOUT",
                         style: TextStyle(
                           color: Colors.white,
+                          fontFamily: 'Prompt',
+                          fontSize: 15,
                         ),
                       ),
                       style:

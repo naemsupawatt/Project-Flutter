@@ -82,6 +82,8 @@ class _HomeState extends State<Home> {
                                     style: TextStyle(
                                       color: Color.fromRGBO(22, 150, 127, 1),
                                       fontWeight: FontWeight.bold,
+                                      fontFamily: 'Prompt',
+                                      fontSize: 15,
                                     ),
                                   ),
                                 ],
@@ -127,6 +129,8 @@ class _HomeState extends State<Home> {
                                       style: TextStyle(
                                         color: Color.fromRGBO(22, 150, 127, 1),
                                         fontWeight: FontWeight.bold,
+                                        fontFamily: 'Prompt',
+                                        fontSize: 15,
                                       ),
                                     ),
                                   ],
@@ -170,6 +174,8 @@ class _HomeState extends State<Home> {
                                     style: TextStyle(
                                       color: Color.fromRGBO(22, 150, 127, 1),
                                       fontWeight: FontWeight.bold,
+                                      fontFamily: 'Prompt',
+                                      fontSize: 15,
                                     ),
                                   ),
                                 ],
@@ -208,6 +214,8 @@ class _HomeState extends State<Home> {
                                     style: TextStyle(
                                       color: Color.fromRGBO(218, 55, 55, 1),
                                       fontWeight: FontWeight.bold,
+                                      fontFamily: 'Prompt',
+                                      fontSize: 15,
                                     ),
                                   ),
                                 ],
