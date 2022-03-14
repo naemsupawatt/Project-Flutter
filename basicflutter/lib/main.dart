@@ -2,16 +2,20 @@
 
 import 'package:basicflutter/home.dart';
 import 'package:basicflutter/page_account.dart';
+import 'package:basicflutter/page_detail.dart';
 import 'package:basicflutter/page_notify.dart';
 import 'package:basicflutter/page_search.dart';
 import 'package:basicflutter/page_setting.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Future main() async {
   var app = MyApp();
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await Firebase.initializeApp();
   runApp(app);
 }
@@ -38,7 +42,8 @@ class _homeState extends State<Menu> {
   int index = 0;
   List _class = [
     Home(),
-    SearchPage(),
+    // SearchPage(),
+    PageDetail(),
     AccountPage(),
     NotifyPage(),
     SettingPage(),

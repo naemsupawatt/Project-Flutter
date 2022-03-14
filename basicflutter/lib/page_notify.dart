@@ -1,3 +1,6 @@
+import 'package:basicflutter/page_detail.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class NotifyPage extends StatefulWidget {
@@ -8,6 +11,7 @@ class NotifyPage extends StatefulWidget {
 }
 
 class _NotifyPageState extends State<NotifyPage> {
+  var textEditController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,61 +27,46 @@ class _NotifyPageState extends State<NotifyPage> {
         ),
         backgroundColor: Color.fromRGBO(30, 194, 165, 100),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(25.0),
-        child: ListView(
-          children: [
-            Container(
-              child: SizedBox(
-                height: 100,
-                width: 294,
-                child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Color.fromRGBO(186, 186, 186, 100))),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          "ชื่อยาสามัญ",
-                          style: TextStyle(
-                            color: Color.fromRGBO(30, 194, 165, 1),
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Prompt',
-                            fontSize: 15,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        const Divider(
-                          color: Color.fromRGBO(203, 203, 203, 100),
-                          height: 1,
-                          thickness: 2,
-                          indent: 25,
-                          endIndent: 25,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          "คาลาไมน์",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            color: Color.fromRGBO(142, 142, 142, 1),
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Prompt',
-                            fontSize: 15,
-                          ),
-                        )
-                      ],
-                    )),
-              ),
-            ),
-          ],
-        ),
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance
+            .collection("detailsMedicine")
+            .snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
+            // return Text("Something went wrong");
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data =
+                  document.data()! as Map<String, dynamic>;
+              return ListTile(
+                leading: SizedBox(
+                  height: 150,
+                  width: 150,
+                  child: Image.network(data["image"]),
+                ),
+                title: Text(data["name"]),
+                subtitle: Text(data["type"]),
+                onTap: () {
+                  print(document.id);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return PageDetail(
+                      valueFromSearch: document.id,
+                    );
+                  }));
+                },
+              );
+            }).toList(),
+          );
+        },
       ),
     );
   }
