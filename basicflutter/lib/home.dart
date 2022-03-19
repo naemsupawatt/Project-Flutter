@@ -1,6 +1,7 @@
 import 'package:basicflutter/page_map.dart';
 import 'package:basicflutter/page_qr.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -96,11 +97,9 @@ class _HomeState extends State<Home> {
                         ),
                         Expanded(
                           child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (context) {
-                                return PageMap();
-                              }));
+                            onTap: () => {
+                              launch(
+                                  "https://www.google.com/maps/search/โรงพยาบาลใกล้ฉัน/")
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -187,38 +186,41 @@ class _HomeState extends State<Home> {
                           width: 10,
                         ),
                         Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color.fromRGBO(218, 55, 55, 1),
-                                width: 2,
+                          child: GestureDetector(
+                            onTap: () => {launch("tel://1669")},
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Color.fromRGBO(218, 55, 55, 1),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            height: 148,
-                            child: Padding(
-                              padding:
-                                  EdgeInsets.only(left: 10, bottom: 10, top: 5),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Image.asset(
-                                    'assets/logo4.png',
-                                    fit: BoxFit.cover,
-                                    height: 56,
-                                  ),
-                                  Text(
-                                    "ฉุกเฉิน",
-                                    style: TextStyle(
-                                      color: Color.fromRGBO(218, 55, 55, 1),
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Prompt',
-                                      fontSize: 15,
+                              height: 148,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: 10, bottom: 10, top: 5),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Image.asset(
+                                      'assets/logo4.png',
+                                      fit: BoxFit.cover,
+                                      height: 56,
                                     ),
-                                  ),
-                                ],
+                                    Text(
+                                      "ฉุกเฉิน",
+                                      style: TextStyle(
+                                        color: Color.fromRGBO(218, 55, 55, 1),
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Prompt',
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

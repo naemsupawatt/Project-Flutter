@@ -1,164 +1,161 @@
-// import 'package:basicflutter/ConnectFirebase.dart';
-// import 'package:basicflutter/Page_DetailMedicine.dart';
-// import 'package:flutter/material.dart';
-// import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:basicflutter/page_detail.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 
-// class SearchPage extends StatefulWidget {
-//   const SearchPage({Key? key}) : super(key: key);
-//   @override
-//   _SearchPageState createState() => _SearchPageState();
-// }
+class PageSearch extends StatefulWidget {
+  const PageSearch({Key? key}) : super(key: key);
 
-// class _SearchPageState extends State<SearchPage> {
-//   List data = [];
-//   List ImageList = [];
-//   List<String> items = [
-//     "Food",
-//     "Transport",
-//     "Personal",
-//     "Shopping",
-//     "Medical",
-//     "Rent",
-//     "Movie",
-//     "Salary"
-//   ];
-//   @override
-//   void initState() {
-//     ConnectFirebase.getMedicine().then((value) async {
-//       data = [];
-//       ImageList = [];
-//       for (var datas in value) {
-//         data.add(
-//           {
-//             "name": datas["name"],
-//             "type": datas["type"],
-//             "details": datas["details"]
-//           },
-//         );
-//         ImageList.add(await firebase_storage.FirebaseStorage.instance
-//             .ref('image_medicine/${datas["name"]}.png')
-//             .getDownloadURL());
-//       }
-//       print(ImageList);
-//       //คำสั่งเช็คหน้า widget ว่าโหลดเสร็จแล้วยัง
-//       if (mounted) {
-//         setState(() {});
-//       }
-//     });
-//     //  getImages(name: datas["name"]);
-//     super.initState();
-//   }
+  @override
+  _PageSearchState createState() => _PageSearchState();
+}
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       appBar: AppBar(
-//         centerTitle: true,
-//         title: Text(
-//           "ค้นหาข้อมูลยา",
-//           style: TextStyle(
-//             fontFamily: 'Prompt',
-//             fontSize: 18,
-//           ),
-//         ),
-//         backgroundColor: Color.fromRGBO(30, 194, 165, 100),
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.all(12.0),
-//         child: Center(
-//             child: ListView.builder(
-//           itemCount: data.length,
-//           itemBuilder: (context, index) {
-//             return detailMedicine(
-//               name: data[index]["name"],
-//               type: data[index]["type"],
-//               details: data[index]["details"],
-//               index: index,
-//             );
-//           },
-//         )),
-//       ),
-//     );
-//   }
-
-// //สร้าง widget ไว้สำหรับเรียกใช้ โดยให้รับตัวแปร name และ type
-//   Widget detailMedicine(
-//       {required String name,
-//       required String type,
-//       required var details,
-//       required int index}) {
-//     return InkWell(
-//       onTap: () => Navigator.push(
-//           context,
-//           MaterialPageRoute(
-//               builder: (context) => PageDetailMedicine(details: details))),
-//       child: Container(
-//         padding: const EdgeInsets.all(10),
-//         margin: const EdgeInsets.only(top: 10),
-//         decoration: BoxDecoration(
-//             border:
-//                 Border.all(width: 1, color: Color.fromRGBO(224, 224, 224, 1))),
-//         child: Row(
-//           children: [
-//             Column(
-//               children: [
-//                 (ImageList.isEmpty)
-//                     ? Image.asset(
-//                         'assets/Detailmedicine.png',
-//                         height: 10,
-//                       )
-//                     : Image.network(
-//                         ImageList[index],
-//                         width: 100,
-//                       ),
-//               ],
-//             ),
-//             SizedBox(
-//               width: 15,
-//             ),
-//             Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 Column(
-//                   children: [
-//                     Text(
-//                       "ชื่อยาทางการค้า : ",
-//                       style: TextStyle(
-//                           fontFamily: 'Prompt',
-//                           fontWeight: FontWeight.bold,
-//                           fontSize: 16,
-//                           color: Color.fromRGBO(57, 137, 123, 1)),
-//                     )
-//                   ],
-//                 ),
-//                 Column(
-//                   children: [
-//                     Text(
-//                       name,
-//                       style: TextStyle(
-//                           fontFamily: 'Prompt',
-//                           fontSize: 14,
-//                           color: Colors.black),
-//                     )
-//                   ],
-//                 ),
-//                 Column(
-//                   children: [
-//                     Text(
-//                       type,
-//                       style: TextStyle(
-//                           fontFamily: 'Prompt',
-//                           fontSize: 12,
-//                           color: Colors.grey),
-//                     )
-//                   ],
-//                 ),
-//               ],
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+class _PageSearchState extends State<PageSearch> {
+  var textEditController = new TextEditingController();
+  var Search = null;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "การแจ้งเตือน",
+          style: TextStyle(
+            fontFamily: 'Prompt',
+            fontSize: 18,
+          ),
+        ),
+        backgroundColor: Color.fromRGBO(30, 194, 165, 100),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'ใส่ชื่อยาที่ต้องการค้นหา...',
+              ),
+              onChanged: (text) {
+                print('First text field: $text');
+                setState(() {
+                  Search = text;
+                });
+              },
+            ),
+            Container(
+              child: StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection("detailsMedicine")
+                    .where("name", isGreaterThanOrEqualTo: Search)
+                    .snapshots(),
+                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (!snapshot.hasData) {
+                    // return Text("Something went wrong");
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return Expanded(
+                    child: ListView(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      children:
+                          snapshot.data!.docs.map((DocumentSnapshot document) {
+                        Map<String, dynamic> data =
+                            document.data()! as Map<String, dynamic>;
+                        return InkWell(
+                          child: SingleChildScrollView(
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              margin: const EdgeInsets.only(top: 10),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 1,
+                                      color: Color.fromRGBO(224, 224, 224, 1))),
+                              child: Row(
+                                children: [
+                                  Column(
+                                    children: [
+                                      Image.network(
+                                        data["image"],
+                                        height: 90,
+                                        width: 90,
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Text(
+                                            "ชื่อยาทางการค้า : ",
+                                            style: TextStyle(
+                                                fontFamily: 'Prompt',
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                                color: Color.fromRGBO(
+                                                    57, 137, 123, 1)),
+                                          )
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            data["name"],
+                                            style: TextStyle(
+                                                fontFamily: 'Prompt',
+                                                fontSize: 16,
+                                                color: Colors.black),
+                                          )
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            data["type"],
+                                            style: TextStyle(
+                                                fontFamily: 'Prompt',
+                                                fontSize: 14,
+                                                color: Colors.grey),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          onTap: () {
+                            print(document.id);
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return PageDetail(
+                                valueFromSearch: document.id,
+                              );
+                            }));
+                          },
+                        );
+                      }).toList(),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

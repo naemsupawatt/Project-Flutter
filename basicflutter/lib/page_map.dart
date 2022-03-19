@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PageMap extends StatefulWidget {
   const PageMap({Key? key}) : super(key: key);
@@ -16,7 +17,8 @@ class _PageMapState extends State<PageMap> {
           children: [
             WebView(
               javascriptMode: JavascriptMode.unrestricted,
-              initialUrl: 'https://www.google.com/maps/search/hospital/',
+              initialUrl:
+                  'https://www.google.com/maps/search/โรงพยาบาลใกล้ฉัน/',
             ),
             Container(
               width: double.infinity,

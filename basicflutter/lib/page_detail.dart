@@ -48,14 +48,98 @@ class _PageDetailState extends State<PageDetail> {
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
 
-            return Container(
-              child: ListTile(
-                leading: SizedBox(
-                    height: 150,
-                    width: 150,
-                    child: Image.network(data['image'])),
-                title: Text(data['details']['contrainDications']),
-                subtitle: Text(data['type']),
+            return Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          data["image"],
+                          height: 150,
+                          width: 150,
+                        )
+                      ],
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Text(
+                            "ชื่อยาสามัญ : ",
+                            style: TextStyle(
+                                fontFamily: 'Prompt',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Color.fromRGBO(57, 137, 123, 1)),
+                          ),
+                          Flexible(
+                            child: Text(
+                              data["details"]["medicineGeneric"],
+                              maxLines: 10,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontFamily: 'Prompt',
+                                  fontSize: 16,
+                                  color: Colors.black),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Text(
+                            "รูปแบบยา : ",
+                            style: TextStyle(
+                                fontFamily: 'Prompt',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Color.fromRGBO(57, 137, 123, 1)),
+                          ),
+                          Flexible(
+                            child: Text(
+                              data["details"]["instructions"],
+                              maxLines: 10,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontFamily: 'Prompt',
+                                  fontSize: 16,
+                                  color: Colors.black),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Text(
+                            "รูปแบบยา : ",
+                            style: TextStyle(
+                                fontFamily: 'Prompt',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Color.fromRGBO(57, 137, 123, 1)),
+                          ),
+                          Flexible(
+                            child: Text(
+                              data["details"]["instructions"],
+                              maxLines: 10,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontFamily: 'Prompt',
+                                  fontSize: 16,
+                                  color: Colors.black),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
           }

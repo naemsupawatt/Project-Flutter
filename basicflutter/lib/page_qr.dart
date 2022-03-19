@@ -1,4 +1,5 @@
 import 'package:basicflutter/home.dart';
+import 'package:basicflutter/page_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:scan/scan.dart';
 
@@ -31,6 +32,11 @@ class _QrPageState extends State<QrPage> {
       ),
       body: ScanView(
         onCapture: (Qrcode) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return PageDetail(
+              valueFromSearch: Qrcode,
+            );
+          }));
           print(Qrcode);
         },
       ),

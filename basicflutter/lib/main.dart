@@ -42,8 +42,7 @@ class _homeState extends State<Menu> {
   int index = 0;
   List _class = [
     Home(),
-    // SearchPage(),
-    PageDetail(),
+    PageSearch(),
     AccountPage(),
     NotifyPage(),
     SettingPage(),
