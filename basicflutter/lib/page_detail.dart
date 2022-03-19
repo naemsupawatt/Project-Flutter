@@ -49,96 +49,382 @@ class _PageDetailState extends State<PageDetail> {
                 snapshot.data!.data() as Map<String, dynamic>;
 
             return Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.network(
-                          data["image"],
-                          height: 150,
-                          width: 150,
-                        )
-                      ],
-                    ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Text(
-                            "ชื่อยาสามัญ : ",
-                            style: TextStyle(
-                                fontFamily: 'Prompt',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                                color: Color.fromRGBO(57, 137, 123, 1)),
-                          ),
-                          Flexible(
-                            child: Text(
-                              data["details"]["medicineGeneric"],
-                              maxLines: 10,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontFamily: 'Prompt',
-                                  fontSize: 16,
-                                  color: Colors.black),
-                            ),
-                          )
-                        ],
+              padding: const EdgeInsets.all(15.0),
+              child: SingleChildScrollView(
+                child: Container(
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Color.fromRGBO(186, 186, 186, 1),
+                              width: 1),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.network(
+                              data["image"],
+                              height: 150,
+                              width: 150,
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Text(
-                            "รูปแบบยา : ",
-                            style: TextStyle(
-                                fontFamily: 'Prompt',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                                color: Color.fromRGBO(57, 137, 123, 1)),
-                          ),
-                          Flexible(
-                            child: Text(
-                              data["details"]["instructions"],
-                              maxLines: 10,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontFamily: 'Prompt',
-                                  fontSize: 16,
-                                  color: Colors.black),
-                            ),
-                          )
-                        ],
+                      SizedBox(
+                        height: 10,
                       ),
-                    ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Text(
-                            "รูปแบบยา : ",
-                            style: TextStyle(
-                                fontFamily: 'Prompt',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                                color: Color.fromRGBO(57, 137, 123, 1)),
-                          ),
-                          Flexible(
-                            child: Text(
-                              data["details"]["instructions"],
-                              maxLines: 10,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontFamily: 'Prompt',
-                                  fontSize: 16,
-                                  color: Colors.black),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Color.fromRGBO(186, 186, 186, 1))),
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "ชื่อยาสามัญ",
+                                  style: TextStyle(
+                                      fontFamily: 'Prompt',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: Color.fromRGBO(57, 137, 123, 1)),
+                                ),
+                              ],
                             ),
-                          )
-                        ],
+                            Divider(
+                              color: Colors.grey,
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    data["details"]["medicineGeneric"],
+                                    maxLines: 10,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontFamily: 'Prompt',
+                                        fontSize: 16,
+                                        color: Colors.black),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Color.fromRGBO(186, 186, 186, 1))),
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "รูปแบบยา",
+                                  style: TextStyle(
+                                      fontFamily: 'Prompt',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: Color.fromRGBO(57, 137, 123, 1)),
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              color: Colors.grey,
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    data["details"]["medicineType"],
+                                    maxLines: 10,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontFamily: 'Prompt',
+                                        fontSize: 16,
+                                        color: Colors.black),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Color.fromRGBO(186, 186, 186, 1))),
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "การใช้ยา",
+                                  style: TextStyle(
+                                      fontFamily: 'Prompt',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: Color.fromRGBO(57, 137, 123, 1)),
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              color: Colors.grey,
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    data["details"]["medicineUse"],
+                                    maxLines: 10,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontFamily: 'Prompt',
+                                        fontSize: 16,
+                                        color: Colors.black),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Color.fromRGBO(186, 186, 186, 1))),
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "สรรพคุณยา",
+                                  style: TextStyle(
+                                      fontFamily: 'Prompt',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: Color.fromRGBO(57, 137, 123, 1)),
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              color: Colors.grey,
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    data["details"]["medicinalProperties"],
+                                    maxLines: 10,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontFamily: 'Prompt',
+                                        fontSize: 16,
+                                        color: Colors.black),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Color.fromRGBO(186, 186, 186, 1))),
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "คำแนะนำการใช้ยา",
+                                  style: TextStyle(
+                                      fontFamily: 'Prompt',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: Color.fromRGBO(57, 137, 123, 1)),
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              color: Colors.grey,
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    data["details"]["instructions"],
+                                    maxLines: 10,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontFamily: 'Prompt',
+                                        fontSize: 16,
+                                        color: Colors.black),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Color.fromRGBO(186, 186, 186, 1))),
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "อาการไม่พึงประสงค์จากยา",
+                                  style: TextStyle(
+                                      fontFamily: 'Prompt',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: Color.fromRGBO(57, 137, 123, 1)),
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              color: Colors.grey,
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    data["details"]["medicineAdverseReactions"],
+                                    maxLines: 10,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontFamily: 'Prompt',
+                                        fontSize: 16,
+                                        color: Colors.black),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Color.fromRGBO(186, 186, 186, 1))),
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "ข้อห้ามใช้",
+                                  style: TextStyle(
+                                      fontFamily: 'Prompt',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: Color.fromRGBO(57, 137, 123, 1)),
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              color: Colors.grey,
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    data["details"]["contrainDications"],
+                                    maxLines: 10,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontFamily: 'Prompt',
+                                        fontSize: 16,
+                                        color: Colors.black),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Color.fromRGBO(186, 186, 186, 1))),
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "การเก็บรักษายา",
+                                  style: TextStyle(
+                                      fontFamily: 'Prompt',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: Color.fromRGBO(57, 137, 123, 1)),
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              color: Colors.grey,
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    data["details"]["medicineStorage"],
+                                    maxLines: 10,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontFamily: 'Prompt',
+                                        fontSize: 16,
+                                        color: Colors.black),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );

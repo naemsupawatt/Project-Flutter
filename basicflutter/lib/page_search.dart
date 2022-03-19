@@ -1,6 +1,5 @@
 import 'package:basicflutter/page_detail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class PageSearch extends StatefulWidget {
@@ -20,7 +19,7 @@ class _PageSearchState extends State<PageSearch> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "การแจ้งเตือน",
+          "ค้นหาข้อมูลยา",
           style: TextStyle(
             fontFamily: 'Prompt',
             fontSize: 18,
@@ -34,7 +33,17 @@ class _PageSearchState extends State<PageSearch> {
           children: [
             TextField(
               decoration: InputDecoration(
-                hintText: 'ใส่ชื่อยาที่ต้องการค้นหา...',
+                hintText: '',
+                border: new OutlineInputBorder(
+                  borderSide: new BorderSide(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                // helperText: 'Keep it short, this is just a demo.',
+                labelText: 'ค้นหาด้วยชื่อยาสามัญ',
+                prefixIcon: const Icon(
+                  Icons.search,
+                  color: Colors.grey,
+                ),
               ),
               onChanged: (text) {
                 print('First text field: $text');
