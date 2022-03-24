@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class LocalNotificationService {
@@ -14,19 +15,19 @@ class LocalNotificationService {
     });
   }
 
-  static void showNotificationOnForeground() {
+  static void showNotificationOnForeground(RemoteMessage message) {
     final notificationDetail = NotificationDetails(
         android: AndroidNotificationDetails(
             "com.example.basicflutter", "basicflutter",
-            importance: Importance.max,
-            priority: Priority.high,
-            ticker: 'ticker'));
+            importance: Importance.max, priority: Priority.high));
+
+    print(message.data["message"]);
 
     _notificationsPlugin.show(
-      DateTime.now().microsecond,
-      'แจ้งเตือน',
-      'ทดสอบ',
-      notificationDetail,
-    );
+        DateTime.now().microsecond,
+        message.notification!.title,
+        message.notification!.body,
+        notificationDetail,
+        payload: message.data["message"]);
   }
 }
