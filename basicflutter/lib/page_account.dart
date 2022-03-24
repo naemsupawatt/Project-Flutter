@@ -1,5 +1,6 @@
 import 'package:basicflutter/ConnectFirebase.dart';
 import 'package:basicflutter/page_login.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,6 +17,7 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+  final FirebaseFirestore UserCollection = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,22 +69,61 @@ class _AccountPageState extends State<AccountPage> {
                       signInWithGoogle().then((result) {
                         if (result != null) {
                           print(result);
-                          ConnectFirebase.addUser(
-                              Name: name,
-                              Email: email,
-                              UrlImage: imageUrl,
-                              Birthday: DateTime.now(),
-                              Message: "",
-                              Sex: "",
-                              Name2: "",
-                              Time: DateTime.now());
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return PageLogin();
-                              },
-                            ),
-                          );
+                          UserCollection.collection("Users")
+                              .doc(userid)
+                              .get()
+                              .then((DocumentSnapshot documentSnapshot) async {
+                            if (documentSnapshot.exists) {
+                              print(
+                                  'Document data: ${documentSnapshot.data()}');
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return PageLogin();
+                                  },
+                                ),
+                              );
+                            } else {
+                              await UserCollection.collection('Users')
+                                  .doc(userid)
+                                  .set({
+                                "Name": name,
+                                "Email": email,
+                                "UrlImage": imageUrl,
+                                "Birthday": DateTime.now(),
+                                "Message": "",
+                                "Sex": "",
+                                "Name2": "",
+                                "Time": DateTime.now()
+                              }).then((value) {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return PageLogin();
+                                    },
+                                  ),
+                                );
+                              }).catchError((error) =>
+                                      print("Failed to add user: $error"));
+                            }
+                          });
+                          // ConnectFirebase.addUser(
+                          //     Name: name,
+                          //     Email: email,
+                          //     UrlImage: imageUrl,
+                          //     Birthday: DateTime.now(),
+                          //     Message: "",
+                          //     Sex: "",
+                          //     Name2: "",
+                          //     Time: DateTime.now());
+                          // Navigator.of(context).push(
+                          //   MaterialPageRoute(
+                          //     builder: (context) {
+                          //       return PageLogin();
+                          //     },
+                          //   ),
+                          // );
+
                         }
                       });
                     } catch (e) {

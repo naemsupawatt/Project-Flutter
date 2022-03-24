@@ -19,7 +19,7 @@ class _PageDetailState extends State<PageDetail> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "รายละเอียด",
+          "รายละเอียดยา",
           style: TextStyle(
             fontFamily: 'Prompt',
             fontSize: 18,

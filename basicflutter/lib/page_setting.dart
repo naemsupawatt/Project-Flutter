@@ -4,7 +4,6 @@ import 'package:basicflutter/page_notify.dart';
 import 'package:basicflutter/page_policy.dart';
 import 'package:basicflutter/page_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:ionicons/ionicons.dart';
 
 class SettingPage extends StatefulWidget {
