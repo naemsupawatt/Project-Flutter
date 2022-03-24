@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types
-
 import 'package:basicflutter/home.dart';
 import 'package:basicflutter/page_account.dart';
 import 'package:basicflutter/page_detail.dart';
@@ -10,10 +9,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 Future main() async {
-  var app = MyApp();
   WidgetsFlutterBinding.ensureInitialized();
+  const initializationSettingsAndroid =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+  final InitializationSettings initializationSettings =
+      InitializationSettings(android: initializationSettingsAndroid);
+
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  var app = MyApp();
+
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await Firebase.initializeApp();
