@@ -39,9 +39,7 @@ class _PageDetailState extends State<PageDetail> {
 
           if (snapshot.hasData && !snapshot.data!.exists) {
             // return Text("Document does not exist");
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return Center(child: Text("ไม่มีข้อมูลยา"));
           }
 
           if (snapshot.connectionState == ConnectionState.done) {

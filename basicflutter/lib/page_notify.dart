@@ -18,6 +18,19 @@ class _NotifyPageState extends State<NotifyPage> {
   var textEditController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center());
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "การแจ้งเตือน",
+          style: TextStyle(
+            fontFamily: 'Prompt',
+            fontSize: 18,
+          ),
+        ),
+        backgroundColor: Color.fromRGBO(30, 194, 165, 100),
+      ),
+    );
   }
 }
