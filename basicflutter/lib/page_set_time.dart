@@ -20,6 +20,20 @@ class _PageSetTimeState extends State<PageSetTime> {
   TimeOfDay selectedTime = TimeOfDay.now();
   bool _validate = false;
   final _formKey = GlobalKey<FormState>();
+
+  // Initial Selected Value
+  // String dropdownvalue = "จันทร์";
+
+  // List of items in our dropdown menu
+  var items = [
+    'จันทร์',
+    'อังคาร',
+    'พุธ',
+    'พฤหัสบดี',
+    'ศุกร์',
+    'เสาร์',
+    'อาทิตย์',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -157,15 +171,45 @@ class _PageSetTimeState extends State<PageSetTime> {
                             }
                             return null;
                           },
+                          readOnly: true,
+                          enableInteractiveSelection: true,
                           controller: DateController,
                           decoration: InputDecoration(
-                              labelText: "กำหนดวัน",
-                              suffixIcon: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.expand_more,
-                                    color: Color.fromRGBO(22, 150, 127, 1),
-                                  ))),
+                            labelText: "กำหนดวัน",
+                            suffixIcon: DropdownButton(
+                              // Initial Value
+                              // value: dropdownvalue,
+
+                              // Down Arrow Icon
+                              icon: const Icon(
+                                Icons.expand_more,
+                                color: Color.fromRGBO(22, 150, 127, 1),
+                              ),
+                              elevation: 16,
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 0, 0, 0)),
+                              underline: Container(
+                                height: 2,
+                                color: Color.fromARGB(255, 255, 255, 255),
+                              ),
+
+                              // Array list of items
+                              items: items.map((String items) {
+                                return DropdownMenuItem(
+                                  value: items,
+                                  child: Text(items),
+                                );
+                              }).toList(),
+                              // After selecting the desired option,it will
+                              // change button value to selected value
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  DateController.text = "${newValue}";
+                                  print(newValue);
+                                });
+                              },
+                            ),
+                          ),
                           style: TextStyle(
                             fontFamily: 'Prompt',
                             fontSize: 16,
