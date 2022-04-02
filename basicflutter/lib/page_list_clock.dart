@@ -1,14 +1,19 @@
+import 'package:basicflutter/googleauth.dart';
+import 'package:basicflutter/page_detail.dart';
 import 'package:basicflutter/page_set_time.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class PageListClock extends StatefulWidget {
   const PageListClock({Key? key}) : super(key: key);
 
   @override
-  State<PageListClock> createState() => _PageListClockState();
+  _PageListClockState createState() => _PageListClockState();
 }
 
 class _PageListClockState extends State<PageListClock> {
+  var textEditController = new TextEditingController();
+  var Search = null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +21,7 @@ class _PageListClockState extends State<PageListClock> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "ตั้งค่าเตือนการใช้ยา",
+          "ค้นหาข้อมูลยา",
           style: TextStyle(
             fontFamily: 'Prompt',
             fontSize: 18,
@@ -25,141 +30,94 @@ class _PageListClockState extends State<PageListClock> {
         backgroundColor: Color.fromRGBO(30, 194, 165, 100),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Container(
-          child: Column(children: [
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
             Container(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Text(
-                      "รายการ",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Prompt',
-                        fontSize: 24,
-                        color: Color.fromARGB(255, 37, 37, 37),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                    color: Color.fromRGBO(186, 186, 186, 1), width: 1),
-              ),
-              child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "ชื่อยา : ",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Prompt',
-                                  fontSize: 16,
-                                  color: Color.fromARGB(255, 72, 71, 71),
+              child: StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection("collectionNotify")
+                    .where("UserID", isEqualTo: userid)
+                    .snapshots(),
+                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (!snapshot.hasData) {
+                    // return Text("Something went wrong");
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return Expanded(
+                    child: ListView(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      children:
+                          snapshot.data!.docs.map((DocumentSnapshot document) {
+                        Map<String, dynamic> data =
+                            document.data()! as Map<String, dynamic>;
+                        return Container(
+                          child: Column(children: [
+                            Card(
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: ListTile(
+                                  title: Text(
+                                    'ชื่อยา : ${data["Name"]}',
+                                    style: TextStyle(
+                                        fontFamily: 'Prompt',
+                                        fontSize: 18,
+                                        color: Color.fromARGB(255, 36, 36, 36)),
+                                  ),
+                                  subtitle: Text(
+                                    'เวลา  : ${data["Hour"]}:${data["Minute"]} น.',
+                                    style: TextStyle(
+                                        fontFamily: 'Prompt',
+                                        fontSize: 18,
+                                        color: Color.fromARGB(255, 36, 36, 36)),
+                                  ),
+                                  trailing: IconButton(
+                                    icon: Icon(Icons.delete),
+                                    color: Color.fromARGB(255, 85, 85, 85),
+                                    onPressed: () {
+                                      print(document.id);
+                                      FirebaseFirestore.instance
+                                          .collection("collectionNotify")
+                                          .doc(document.id)
+                                          .delete()
+                                          .then(
+                                              (value) => print("User Deleted"))
+                                          .catchError((error) => print(
+                                              "Failed to delete user: $error"));
+                                    },
+                                  ),
                                 ),
                               ),
-                              Text(
-                                "ไซเมนิโคน",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Prompt',
-                                  fontSize: 16,
-                                  color: Color.fromARGB(255, 72, 71, 71),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "06:00 น.",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Prompt',
-                                  fontSize: 24,
-                                  color: Color.fromARGB(255, 72, 71, 71),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "วัน",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Prompt',
-                                  fontSize: 16,
-                                  color: Color.fromARGB(255, 93, 91, 91),
-                                ),
-                              ),
-                              Text(
-                                "ศุกร์",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Prompt',
-                                  fontSize: 16,
-                                  color: Color.fromARGB(255, 93, 91, 91),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            )
+                          ]),
+                        );
+                      }).toList(),
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(120, 0, 0, 0),
-                      child: Column(
-                        children: [
-                          IconButton(
-                            icon: Icon(
-                              Icons.delete,
-                              size: 30,
-                            ),
-                            onPressed: () {
-                              //ลบเวลาทิ้ง
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  );
+                },
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              child:
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                InkWell(
-                  child: Icon(
-                    Icons.add_circle,
-                    size: 40,
-                    color: Color(0xFF1EC2A5),
-                  ),
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PageSetTime())),
-                )
-              ]),
-            )
-          ]),
+          ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => PageSetTime()));
+        },
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+        backgroundColor: Color.fromRGBO(30, 194, 165, 1),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

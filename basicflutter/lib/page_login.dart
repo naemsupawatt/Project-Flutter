@@ -25,76 +25,78 @@ class _PageLoginState extends State<PageLogin> {
         ),
         backgroundColor: Color.fromRGBO(30, 194, 165, 100),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Center(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 40,
-              ),
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Image.network(imageUrl)),
-              SizedBox(
-                height: 40,
-              ),
-              const Divider(
-                color: Color.fromRGBO(203, 203, 203, 100),
-                height: 1,
-                thickness: 2,
-                indent: 25,
-                endIndent: 25,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                "ชื่อ - นามสกุล                " + name,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Prompt',
-                  fontSize: 15,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Center(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 40,
                 ),
-              ),
-              //Text(email),
-              //Text(userid),
-              SizedBox(
-                height: 20,
-              ),
-              const Divider(
-                color: Color.fromRGBO(203, 203, 203, 100),
-                height: 1,
-                thickness: 2,
-                indent: 25,
-                endIndent: 25,
-              ),
-              SizedBox(
-                height: 300,
-              ),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Image.network(imageUrl)),
+                SizedBox(
+                  height: 40,
+                ),
+                const Divider(
+                  color: Color.fromRGBO(203, 203, 203, 100),
+                  height: 1,
+                  thickness: 2,
+                  indent: 25,
+                  endIndent: 25,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "ชื่อ - นามสกุล                " + name,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Prompt',
+                    fontSize: 15,
+                  ),
+                ),
+                //Text(email),
+                //Text(userid),
+                SizedBox(
+                  height: 20,
+                ),
+                const Divider(
+                  color: Color.fromRGBO(203, 203, 203, 100),
+                  height: 1,
+                  thickness: 2,
+                  indent: 25,
+                  endIndent: 25,
+                ),
+                SizedBox(
+                  height: 100,
+                ),
 
-              SizedBox(
-                  height: 50,
-                  width: 250,
-                  child: TextButton(
-                      onPressed: () {
-                        signOutGoogle();
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(builder: (context) {
-                          return Menu();
-                        }), ModalRoute.withName('/'));
-                      },
-                      child: Text(
-                        "LOGOUT",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Prompt',
-                          fontSize: 15,
+                SizedBox(
+                    height: 50,
+                    width: 250,
+                    child: TextButton(
+                        onPressed: () {
+                          signOutGoogle();
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (context) {
+                            return Menu();
+                          }), ModalRoute.withName('/'));
+                        },
+                        child: Text(
+                          "LOGOUT",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Prompt',
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
-                      style:
-                          TextButton.styleFrom(backgroundColor: Colors.grey))),
-            ],
+                        style: TextButton.styleFrom(
+                            backgroundColor: Colors.grey))),
+              ],
+            ),
           ),
         ),
       ),

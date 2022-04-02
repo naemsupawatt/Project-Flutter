@@ -33,175 +33,63 @@ class _NotifyPageState extends State<NotifyPage> {
         backgroundColor: Color.fromRGBO(30, 194, 165, 100),
       ),
       body: SingleChildScrollView(
-        child: Center(
-            child: Column(
-          children: [
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              SizedBox(
-                height: 10,
-              ),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            children: [
               Container(
-                decoration: BoxDecoration(
-                    border:
-                        Border.all(color: Color.fromRGBO(186, 186, 186, 1))),
-                child: Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(15.0),
-                      width: 340,
-                      child: Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'จันทร์ 22:00 น.',
-                                style: TextStyle(
-                                    fontFamily: 'Prompt',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                    color: Color.fromRGBO(57, 137, 123, 1)),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    'เตือนการใช้ยา : ',
-                                    style: TextStyle(
-                                        fontFamily: 'Prompt',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14,
-                                        color: Color.fromARGB(255, 79, 79, 79)),
-                                  ),
-                                  Text(
-                                    'Amoxicillin',
-                                    style: TextStyle(
-                                        fontFamily: 'Prompt',
-                                        fontSize: 14,
-                                        color: Color.fromARGB(255, 0, 0, 0)),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    'ข้อความที่แจ้งเตือน : ',
-                                    style: TextStyle(
-                                        fontFamily: 'Prompt',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14,
-                                        color: Color.fromARGB(255, 79, 79, 79)),
-                                  ),
-                                  Text(
-                                    'ก่อนนอน 1 เม็ด',
-                                    style: TextStyle(
-                                        fontFamily: 'Prompt',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14,
-                                        color: Color.fromARGB(255, 79, 79, 79)),
-                                  ),
-                                ],
-                              ),
-                            ],
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(8),
+                    child: ListTile(
+                      title: Text(
+                        '17:35 น.',
+                        style: TextStyle(
+                            fontFamily: 'Prompt',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Color.fromRGBO(57, 137, 123, 1)),
+                      ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'เตือนการใช้ยา : พาราเซตามอล',
+                            style: TextStyle(
+                                fontFamily: 'Prompt',
+                                fontSize: 16,
+                                color: Color.fromARGB(255, 36, 36, 36)),
                           ),
-                          Column(
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  Icons.delete,
-                                  size: 30,
-                                ),
-                                onPressed: () {
-                                  //ลบเวลาทิ้ง
-                                },
-                              ),
-                            ],
+                          Text(
+                            'ข้อความที่แจ้งเตือน : ก่อนนอน 1 เม็ด',
+                            style: TextStyle(
+                                fontFamily: 'Prompt',
+                                fontSize: 16,
+                                color: Color.fromARGB(255, 36, 36, 36)),
                           )
                         ],
                       ),
+                      trailing: Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.delete,
+                            size: 30,
+                          ),
+                          color: Color.fromARGB(255, 85, 85, 85),
+                          onPressed: () {},
+                        ),
+                      ),
                     ),
-                  ],
+                  ),
                 ),
-              )
-            ]),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              SizedBox(
-                height: 10,
               ),
-              Container(
-                margin: const EdgeInsets.all(12.0),
-                padding: const EdgeInsets.all(15.0),
-                width: 340,
-                decoration: BoxDecoration(
-                    border:
-                        Border.all(color: Color.fromRGBO(186, 186, 186, 1))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'จันทร์ 22:00 น.',
-                      style: TextStyle(
-                          fontFamily: 'Prompt',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Color.fromRGBO(57, 137, 123, 1)),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'เตือนการใช้ยา : ',
-                          style: TextStyle(
-                              fontFamily: 'Prompt',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                              color: Color.fromARGB(255, 79, 79, 79)),
-                        ),
-                        Text(
-                          'Amoxicillin',
-                          style: TextStyle(
-                              fontFamily: 'Prompt',
-                              fontSize: 14,
-                              color: Color.fromARGB(255, 0, 0, 0)),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'ข้อความที่แจ้งเตือน : ',
-                          style: TextStyle(
-                              fontFamily: 'Prompt',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                              color: Color.fromARGB(255, 79, 79, 79)),
-                        ),
-                        Text(
-                          'ก่อนนอน 1 เม็ด',
-                          style: TextStyle(
-                              fontFamily: 'Prompt',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                              color: Color.fromARGB(255, 79, 79, 79)),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              )
-            ]),
-          ],
-        )),
+              SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

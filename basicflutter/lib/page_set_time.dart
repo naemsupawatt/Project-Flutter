@@ -4,6 +4,7 @@ import 'package:barcode_scan2/barcode_scan2.dart';
 import 'package:basicflutter/page_qr.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:basicflutter/googleauth.dart';
 
 class PageSetTime extends StatefulWidget {
   const PageSetTime({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class PageSetTime extends StatefulWidget {
 }
 
 class _PageSetTimeState extends State<PageSetTime> {
+  final FirebaseFirestore NotifyCollection = FirebaseFirestore.instance;
   final NameController = TextEditingController();
   final TimeController = TextEditingController();
   final DateController = TextEditingController();
@@ -249,10 +251,23 @@ class _PageSetTimeState extends State<PageSetTime> {
                             alignment: Alignment.centerRight,
                             child: ElevatedButton(
                               onPressed: () {
-                                setState(() {
-                                  if (_formKey.currentState!.validate()) {
-                                    // If the form is valid, display a snackbar. In the real world,
-                                    // you'd often call a server or save the information in a database.
+                                if (_formKey.currentState!.validate()) {
+                                  print(NameController.text);
+                                  print(TimeController.text);
+                                  print(DateController.text);
+                                  print(TextController.text);
+                                  var Hour = selectedTime.hour;
+                                  var Minute = selectedTime.minute;
+                                  NotifyCollection.collection(
+                                          "collectionNotify")
+                                      .add({
+                                    'Name': NameController.text, // John Doe
+                                    'Hour': Hour, // Stokes and Sons
+                                    'Minute': Minute,
+                                    'Text': TextController.text, // 42
+                                    'UserID': userid
+                                  }).then((value) {
+                                    print("บันทึกข้อมูลยาสำเร็จ");
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
                                           content: Text(
@@ -263,8 +278,10 @@ class _PageSetTimeState extends State<PageSetTime> {
                                         ),
                                       )),
                                     );
-                                  }
-                                });
+                                    Navigator.pop(context);
+                                  }).catchError((error) =>
+                                          print("Failed to add user: $error"));
+                                }
                               },
                               child: Text(
                                 'บันทึก',

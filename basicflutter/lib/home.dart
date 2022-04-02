@@ -1,3 +1,4 @@
+import 'package:basicflutter/page_about_medicine.dart';
 import 'package:basicflutter/page_list_clock.dart';
 import 'package:basicflutter/page_qr.dart';
 import 'package:basicflutter/page_set_time.dart';
@@ -159,38 +160,47 @@ class _HomeState extends State<Home> {
                       Row(
                         children: [
                           Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Color.fromRGBO(30, 194, 165, 1),
-                                  width: 2,
+                            child: InkWell(
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          PageAboutMedicine())),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Color.fromRGBO(30, 194, 165, 1),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              height: 148,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, bottom: 10, top: 5),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Image.asset(
-                                      'assets/logo3.png',
-                                      fit: BoxFit.cover,
-                                      height: 56,
-                                    ),
-                                    Text(
-                                      "สาระเกี่ยวกับยา",
-                                      style: TextStyle(
-                                        color: Color.fromRGBO(22, 150, 127, 1),
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Prompt',
-                                        fontSize: 15,
+                                height: 148,
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 10, bottom: 10, top: 5),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Image.asset(
+                                        'assets/logo3.png',
+                                        fit: BoxFit.cover,
+                                        height: 56,
                                       ),
-                                    ),
-                                  ],
+                                      Text(
+                                        "สาระเกี่ยวกับยา",
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(22, 150, 127, 1),
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Prompt',
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

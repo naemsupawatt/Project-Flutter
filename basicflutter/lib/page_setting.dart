@@ -66,7 +66,7 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     tileColor: Colors.white,
                     onTap: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => PageSearch()))),
+                        MaterialPageRoute(builder: (context) => NotifyPage()))),
               ),
               Card(
                 child: ListTile(
