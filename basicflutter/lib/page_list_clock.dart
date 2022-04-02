@@ -60,32 +60,62 @@ class _PageListClockState extends State<PageListClock> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "Movie Night",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Prompt',
-                              fontSize: 16,
-                              color: Color.fromARGB(255, 37, 37, 37),
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                "ชื่อยา : ",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Prompt',
+                                  fontSize: 16,
+                                  color: Color.fromARGB(255, 72, 71, 71),
+                                ),
+                              ),
+                              Text(
+                                "ไซเมนิโคน",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Prompt',
+                                  fontSize: 16,
+                                  color: Color.fromARGB(255, 72, 71, 71),
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            "06:00 AM",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Prompt',
-                              fontSize: 24,
-                              color: Color.fromARGB(255, 37, 37, 37),
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                "06:00 น.",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Prompt',
+                                  fontSize: 24,
+                                  color: Color.fromARGB(255, 72, 71, 71),
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            "Friday",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Prompt',
-                              fontSize: 16,
-                              color: Color.fromARGB(255, 37, 37, 37),
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                "วัน",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Prompt',
+                                  fontSize: 16,
+                                  color: Color.fromARGB(255, 93, 91, 91),
+                                ),
+                              ),
+                              Text(
+                                "ศุกร์",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Prompt',
+                                  fontSize: 16,
+                                  color: Color.fromARGB(255, 93, 91, 91),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

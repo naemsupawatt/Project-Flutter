@@ -96,7 +96,7 @@ class _PageSetTimeState extends State<PageSetTime> {
                                         setState(() {
                                           NameController.text = data["name"];
                                           TextController.text =
-                                              data["details"]["instructions"];
+                                              data["details"]["medicineUse"];
                                         });
                                       } else {
                                         print(
@@ -112,6 +112,11 @@ class _PageSetTimeState extends State<PageSetTime> {
                             fontFamily: 'Prompt',
                             fontSize: 16,
                           ),
+                          onChanged: (Nametext) {
+                            setState(() {
+                              print("ชื่อยา : ${Nametext}");
+                            });
+                          },
                         ),
                         TextFormField(
                           validator: (value) {
@@ -230,6 +235,11 @@ class _PageSetTimeState extends State<PageSetTime> {
                             fontFamily: 'Prompt',
                             fontSize: 16,
                           ),
+                          onChanged: (Text) {
+                            setState(() {
+                              print("ข้อความที่แจ้งเตือน : ${Text}");
+                            });
+                          },
                         ),
                         SizedBox(
                           height: 10,
