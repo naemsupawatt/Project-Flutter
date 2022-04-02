@@ -21,7 +21,7 @@ class _PageListClockState extends State<PageListClock> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "ค้นหาข้อมูลยา",
+          "ตั้งค่าเตือนการใช้ยา",
           style: TextStyle(
             fontFamily: 'Prompt',
             fontSize: 18,
@@ -33,6 +33,24 @@ class _PageListClockState extends State<PageListClock> {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10, bottom: 5, top: 10),
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "รายการแจ้งเตือนทานยา",
+                      style: TextStyle(
+                          fontFamily: 'Prompt',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                          color: Color.fromRGBO(57, 137, 123, 1)),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Container(
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
@@ -65,20 +83,49 @@ class _PageListClockState extends State<PageListClock> {
                               child: Padding(
                                 padding: EdgeInsets.all(8),
                                 child: ListTile(
-                                  title: Text(
-                                    'ชื่อยา : ${data["Name"]}',
-                                    style: TextStyle(
-                                        fontFamily: 'Prompt',
-                                        fontSize: 18,
-                                        color: Color.fromARGB(255, 36, 36, 36)),
+                                  title: Row(
+                                    children: [
+                                      Text(
+                                        'วัน${data["Day"]} ',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'Prompt',
+                                            fontSize: 22,
+                                            color: Color.fromRGBO(
+                                                57, 137, 123, 1)),
+                                      ),
+                                      Text(
+                                        '${data["Hour"]}:${data["Minute"]} น.',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'Prompt',
+                                            fontSize: 20,
+                                            color: Color.fromRGBO(
+                                                57, 137, 123, 1)),
+                                      ),
+                                    ],
                                   ),
-                                  subtitle: Text(
-                                    'เวลา  : ${data["Hour"]}:${data["Minute"]} น.',
-                                    style: TextStyle(
-                                        fontFamily: 'Prompt',
-                                        fontSize: 18,
-                                        color: Color.fromARGB(255, 36, 36, 36)),
+                                  subtitle: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        'ชื่อยา : ${data["Name"]}',
+                                        style: TextStyle(
+                                            fontFamily: 'Prompt',
+                                            fontSize: 16,
+                                            color: Color.fromARGB(
+                                                255, 36, 36, 36)),
+                                      ),
+                                    ],
                                   ),
+                                  // subtitle: Text(
+                                  //   'เวลา  : ${data["Hour"]}:${data["Minute"]} น.',
+                                  //   style: TextStyle(
+                                  //       fontFamily: 'Prompt',
+                                  //       fontSize: 18,
+                                  //       color: Color.fromARGB(255, 36, 36, 36)),
+                                  // ),
                                   trailing: IconButton(
                                     icon: Icon(Icons.delete),
                                     color: Color.fromARGB(255, 85, 85, 85),

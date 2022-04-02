@@ -261,7 +261,8 @@ class _PageSetTimeState extends State<PageSetTime> {
                                   NotifyCollection.collection(
                                           "collectionNotify")
                                       .add({
-                                    'Name': NameController.text, // John Doe
+                                    'Name': NameController.text,
+                                    'Day': DateController.text,
                                     'Hour': Hour, // Stokes and Sons
                                     'Minute': Minute,
                                     'Text': TextController.text, // 42
