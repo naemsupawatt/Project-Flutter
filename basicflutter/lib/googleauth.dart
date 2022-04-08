@@ -58,6 +58,14 @@ Future<String?> signInWithGoogle() async {
 
 Future<void> signOutGoogle() async {
   await googleSignIn.signOut();
+  await FirebaseAuth.instance.signOut();
 
   print("User Signed Out");
+}
+
+Future<void> splashscreenSignedin(displayName, authemail, photoURL, uid) async {
+  name = displayName!;
+  email = authemail!;
+  imageUrl = photoURL!;
+  userid = uid;
 }

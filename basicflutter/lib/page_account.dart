@@ -1,5 +1,7 @@
 import 'package:basicflutter/ConnectFirebase.dart';
+import 'package:basicflutter/home.dart';
 import 'package:basicflutter/page_login.dart';
+import 'package:basicflutter/page_root_app.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -79,7 +81,7 @@ class _AccountPageState extends State<AccountPage> {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) {
-                                    return PageLogin();
+                                    return RootApp();
                                   },
                                 ),
                               );

@@ -1,3 +1,4 @@
+import 'package:basicflutter/test.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,30 +30,71 @@ class _PageAboutMedicineState extends State<PageAboutMedicine> {
           child: Column(
             children: [
               Container(
-                child: Card(
-                  child: Padding(
-                    padding: EdgeInsets.all(8),
-                    child: ListTile(
-                      title: Text(
-                        'วิธีการเก็บรักษายา',
-                        style: TextStyle(
-                            fontFamily: 'Prompt',
-                            fontSize: 18,
-                            color: Color.fromRGBO(57, 137, 123, 1)),
-                      ),
-                      subtitle: Text(
-                        'ข้อควรรู้เกี่ยวกับยา',
-                        style: TextStyle(
-                            fontFamily: 'Prompt',
-                            fontSize: 16,
-                            color: Colors.black),
-                      ),
-                      trailing: Icon(
-                        Icons.picture_as_pdf,
-                        color: Colors.red,
+                child: Column(
+                  children: [
+                    Card(
+                      child: Padding(
+                        padding: EdgeInsets.all(8),
+                        child: ListTile(
+                            title: Text(
+                              'เรื่องน่ารู้เกี่ยวกับ COVID-19',
+                              style: TextStyle(
+                                  fontFamily: 'Prompt',
+                                  fontSize: 18,
+                                  color: Color.fromRGBO(57, 137, 123, 1)),
+                            ),
+                            // subtitle: Text(
+                            //   'ข้อควรรู้เกี่ยวกับยา',
+                            //   style: TextStyle(
+                            //       fontFamily: 'Prompt',
+                            //       fontSize: 16,
+                            //       color: Colors.black),
+                            // ),
+                            trailing: IconButton(
+                                icon: Icon(
+                                  Icons.picture_as_pdf,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Test()));
+                                })),
                       ),
                     ),
-                  ),
+                    Card(
+                      child: Padding(
+                        padding: EdgeInsets.all(8),
+                        child: ListTile(
+                            title: Text(
+                              'วิธีการเก็บรักษายา',
+                              style: TextStyle(
+                                  fontFamily: 'Prompt',
+                                  fontSize: 18,
+                                  color: Color.fromRGBO(57, 137, 123, 1)),
+                            ),
+                            // subtitle: Text(
+                            //   'ข้อควรรู้เกี่ยวกับยา',
+                            //   style: TextStyle(
+                            //       fontFamily: 'Prompt',
+                            //       fontSize: 16,
+                            //       color: Colors.black),
+                            // ),
+                            trailing: IconButton(
+                                icon: Icon(
+                                  Icons.picture_as_pdf,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Test()));
+                                })),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(

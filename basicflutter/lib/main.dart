@@ -8,6 +8,7 @@ import 'package:basicflutter/page_root_app.dart';
 import 'package:basicflutter/page_search.dart';
 import 'package:basicflutter/page_setting.dart';
 import 'package:basicflutter/services/local_notifications.dart';
+import 'package:basicflutter/splashscreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,7 +23,7 @@ final GoogleSignIn googleSignIn = GoogleSignIn();
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 Future<void> backroundHandler(RemoteMessage message) async {
-  print(" This is message from background");
+  print("This is message from background");
   print(message.notification!.title);
   print(message.notification!.body);
 }
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: ("Medicine Usage with QR Code"),
-      home: Menu(), // ให้หน้า Menu เป็นหน้าแรก
+      home: SplashScreen(), // ให้หน้า Menu เป็นหน้าแรก
       theme: ThemeData(primarySwatch: Colors.green),
     );
   }
@@ -88,6 +89,20 @@ class _homeState extends State<Menu> {
     // background State
     FirebaseMessaging.onMessageOpenedApp.listen((event) {
       print(event);
+    });
+
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => RootApp()));
+      } else {
+        print('User is signed in!');
+        splashscreenSignedin(
+            user.displayName, user.email, user.photoURL, user.uid);
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => MyApp()));
+      }
     });
   }
 

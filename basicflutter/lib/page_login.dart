@@ -1,6 +1,7 @@
 import 'package:basicflutter/googleauth.dart';
 import 'package:basicflutter/home.dart';
 import 'package:basicflutter/main.dart';
+import 'package:basicflutter/page_root_app.dart';
 import 'package:flutter/material.dart';
 
 class PageLogin extends StatefulWidget {
@@ -82,7 +83,7 @@ class _PageLoginState extends State<PageLogin> {
                           signOutGoogle();
                           Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(builder: (context) {
-                            return Menu();
+                            return MyApp();
                           }), ModalRoute.withName('/'));
                         },
                         child: Text(
