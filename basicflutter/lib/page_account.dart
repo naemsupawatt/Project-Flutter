@@ -78,13 +78,10 @@ class _AccountPageState extends State<AccountPage> {
                             if (documentSnapshot.exists) {
                               print(
                                   'Document data: ${documentSnapshot.data()}');
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return RootApp();
-                                  },
-                                ),
-                              );
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(builder: (context) {
+                                return RootApp();
+                              }), ModalRoute.withName('/'));
                             } else {
                               await UserCollection.collection('Users')
                                   .doc(userid)

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'googleauth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -58,7 +59,7 @@ class StartState extends State<SplashScreen> {
                   child: Stack(children: [
                     Container(
                       child: Image.asset(
-                        'assets/frampage.png',
+                        'assets/Frame_Index.png',
                       ),
                     ),
                     Padding(padding: EdgeInsets.only(top: 20.0)),
