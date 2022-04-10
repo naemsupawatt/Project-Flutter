@@ -28,7 +28,7 @@ class _PageSearchState extends State<PageSearch> {
         backgroundColor: Color.fromRGBO(30, 194, 165, 100),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(14.0),
         child: Column(
           children: [
             TextField(
@@ -81,68 +81,59 @@ class _PageSearchState extends State<PageSearch> {
                         return InkWell(
                           child: SingleChildScrollView(
                             child: Container(
-                              padding: const EdgeInsets.all(10),
-                              margin: const EdgeInsets.only(top: 10),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 1,
-                                      color: Color.fromRGBO(224, 224, 224, 1))),
-                              child: Row(
-                                children: [
-                                  Column(
-                                    children: [
-                                      Image.network(
-                                        data["image"],
-                                        height: 90,
-                                        width: 90,
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 15,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          Text(
-                                            "ชื่อยาทางการค้า : ",
-                                            style: TextStyle(
-                                                fontFamily: 'Prompt',
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 16,
-                                                color: Color.fromRGBO(
-                                                    57, 137, 123, 1)),
-                                          )
-                                        ],
-                                      ),
-                                      Column(
-                                        children: [
-                                          Text(
-                                            data["name"],
-                                            style: TextStyle(
-                                                fontFamily: 'Prompt',
-                                                fontSize: 16,
-                                                color: Colors.black),
-                                          )
-                                        ],
-                                      ),
-                                      Column(
-                                        children: [
-                                          Text(
+                              child: Center(
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Card(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: ListTile(
+                                          leading: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              minWidth: 44,
+                                              minHeight: 44,
+                                              maxWidth: 64,
+                                              maxHeight: 64,
+                                            ),
+                                            child: Image.network(data["image"]),
+                                          ),
+                                          title: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "ชื่อยาทางการค้า",
+                                                style: TextStyle(
+                                                    fontFamily: 'Prompt',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16,
+                                                    color: Color.fromRGBO(
+                                                        57, 137, 123, 1)),
+                                              ),
+                                              Text(
+                                                data["name"],
+                                                style: TextStyle(
+                                                    fontFamily: 'Prompt',
+                                                    fontSize: 16,
+                                                    color: Colors.black),
+                                              ),
+                                            ],
+                                          ),
+                                          subtitle: Text(
                                             data["type"],
                                             style: TextStyle(
                                                 fontFamily: 'Prompt',
                                                 fontSize: 14,
                                                 color: Colors.grey),
-                                          )
-                                        ],
+                                          ),
+                                        ),
                                       ),
-                                    ],
-                                  )
-                                ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
