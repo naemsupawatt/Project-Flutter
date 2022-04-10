@@ -105,7 +105,7 @@ class _PageSearchState extends State<PageSearch> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                "ชื่อยาทางการค้า",
+                                                "ชื่อยาทางการค้า : ",
                                                 style: TextStyle(
                                                     fontFamily: 'Prompt',
                                                     fontWeight: FontWeight.bold,
