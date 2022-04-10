@@ -49,35 +49,86 @@ class StartState extends State<SplashScreen> {
   initScreen(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  child: Stack(children: [
-                    Container(
-                      child: Image.asset(
-                        'assets/Frame_Index.png',
-                      ),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          'assets/headpage.png',
+                          width: 200,
+                        ),
+                      ],
                     ),
-                    Padding(padding: EdgeInsets.only(top: 20.0)),
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 600),
-                        child: Container(
-                          child: CircularProgressIndicator(
-                            backgroundColor: Color.fromRGBO(30, 194, 165, 1),
-                            strokeWidth: 2,
-                          ),
+                  ),
+                  SizedBox(height: 160),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/Frame1.png',
+                          width: 256,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 280),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        child: Stack(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Image.asset(
+                                  'assets/endpage.png',
+                                  width: 200,
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircularProgressIndicator(
+                                  backgroundColor:
+                                      Color.fromRGBO(30, 194, 165, 1),
+                                  strokeWidth: 2,
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
-                    )
-                  ]),
-                )
-              ],
-            ),
+                    ],
+                  ),
+                ],
+              ),
+              // Container(
+              //   child: Stack(children: [
+              //     Padding(padding: EdgeInsets.only(top: 20.0)),
+              //     Center(
+              //       child: Padding(
+              //         padding: const EdgeInsets.only(top: 600),
+              // child: Container(
+              //   child: CircularProgressIndicator(
+              //     backgroundColor: Color.fromRGBO(30, 194, 165, 1),
+              //     strokeWidth: 2,
+              //   ),
+              // ),
+              //       ),
+              //     )
+              //   ]),
+              // )
+            ],
           ),
         ),
       ),
