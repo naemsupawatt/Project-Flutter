@@ -156,10 +156,84 @@ class _PageSetTimeState extends State<PageSetTime> {
                                       selectedTime = result;
                                       print(selectedTime.hour);
                                       print(selectedTime.minute);
-                                      setState(() {
-                                        TimeController.text =
-                                            "${selectedTime.hour} : ${selectedTime.minute} น.";
-                                      });
+                                      if ((selectedTime.hour == 0 ||
+                                              selectedTime.hour == 1 ||
+                                              selectedTime.hour == 2 ||
+                                              selectedTime.hour == 3 ||
+                                              selectedTime.hour == 4 ||
+                                              selectedTime.hour == 5 ||
+                                              selectedTime.hour == 6 ||
+                                              selectedTime.hour == 7 ||
+                                              selectedTime.hour == 8 ||
+                                              selectedTime.hour == 9) &&
+                                          (selectedTime.minute == 0 ||
+                                              selectedTime.minute == 1 ||
+                                              selectedTime.minute == 2 ||
+                                              selectedTime.minute == 3 ||
+                                              selectedTime.minute == 4 ||
+                                              selectedTime.minute == 5 ||
+                                              selectedTime.minute == 6 ||
+                                              selectedTime.minute == 7 ||
+                                              selectedTime.minute == 8 ||
+                                              selectedTime.minute == 9)) {
+                                        setState(() {
+                                          TimeController.text =
+                                              "0${selectedTime.hour} : 0${selectedTime.minute} น.";
+                                        });
+                                      } else if ((selectedTime.hour != 0 ||
+                                              selectedTime.hour != 1 ||
+                                              selectedTime.hour != 2 ||
+                                              selectedTime.hour != 3 ||
+                                              selectedTime.hour != 4 ||
+                                              selectedTime.hour != 5 ||
+                                              selectedTime.hour != 6 ||
+                                              selectedTime.hour != 7 ||
+                                              selectedTime.hour != 8 ||
+                                              selectedTime.hour != 9) &&
+                                          (selectedTime.minute == 0 ||
+                                              selectedTime.minute == 1 ||
+                                              selectedTime.minute == 2 ||
+                                              selectedTime.minute == 3 ||
+                                              selectedTime.minute == 4 ||
+                                              selectedTime.minute == 5 ||
+                                              selectedTime.minute == 6 ||
+                                              selectedTime.minute == 7 ||
+                                              selectedTime.minute == 8 ||
+                                              selectedTime.minute == 9)) {
+                                        setState(() {
+                                          TimeController.text =
+                                              "${selectedTime.hour} : 0${selectedTime.minute} น.";
+                                        });
+                                      } else if ((selectedTime.hour == 0 ||
+                                              selectedTime.hour == 1 ||
+                                              selectedTime.hour == 2 ||
+                                              selectedTime.hour == 3 ||
+                                              selectedTime.hour == 4 ||
+                                              selectedTime.hour == 5 ||
+                                              selectedTime.hour == 6 ||
+                                              selectedTime.hour == 7 ||
+                                              selectedTime.hour == 8 ||
+                                              selectedTime.hour == 9) &&
+                                          (selectedTime.minute != 0 ||
+                                              selectedTime.minute != 1 ||
+                                              selectedTime.minute != 2 ||
+                                              selectedTime.minute != 3 ||
+                                              selectedTime.minute != 4 ||
+                                              selectedTime.minute != 5 ||
+                                              selectedTime.minute != 6 ||
+                                              selectedTime.minute != 7 ||
+                                              selectedTime.minute != 8 ||
+                                              selectedTime.minute != 9)) {
+                                        setState(() {
+                                          TimeController.text =
+                                              "0${selectedTime.hour} : ${selectedTime.minute} น.";
+                                        });
+                                      } else {
+                                        setState(() {
+                                          TimeController.text =
+                                              "${selectedTime.hour} : ${selectedTime.minute} น.";
+                                        });
+                                      }
                                     }
                                   },
                                   icon: Icon(
