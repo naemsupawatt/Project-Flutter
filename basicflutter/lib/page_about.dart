@@ -96,16 +96,16 @@ class _PageAboutState extends State<PageAbout> {
                     children: <Widget>[
                       Column(
                         children: [
-                          ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Image.asset(
-                                'assets/supawat.jpg',
-                                width: 100,
-                                height: 100,
-                              )),
-                          SizedBox(
-                            height: 15,
-                          ),
+                          // ClipRRect(
+                          //     borderRadius: BorderRadius.circular(15),
+                          //     child: Image.asset(
+                          //       'assets/supawat.jpg',
+                          //       width: 100,
+                          //       height: 100,
+                          //     )),
+                          // SizedBox(
+                          //   height: 15,
+                          // ),
                           Text(
                             "ศุภวัฒน์ หลีกภัย",
                             style: TextStyle(
@@ -122,16 +122,16 @@ class _PageAboutState extends State<PageAbout> {
                       ),
                       Column(
                         children: [
-                          ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Image.asset(
-                                'assets/apinya.jpg',
-                                width: 100,
-                                height: 100,
-                              )),
-                          SizedBox(
-                            height: 15,
-                          ),
+                          // ClipRRect(
+                          //     borderRadius: BorderRadius.circular(15),
+                          //     child: Image.asset(
+                          //       'assets/apinya.jpg',
+                          //       width: 100,
+                          //       height: 100,
+                          //     )),
+                          // SizedBox(
+                          //   height: 15,
+                          // ),
                           Text(
                             "อภิญญา ทวีชาติ",
                             style: TextStyle(
