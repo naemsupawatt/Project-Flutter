@@ -135,10 +135,26 @@ class _PageListClockState extends State<PageListClock> {
                                           .collection("collectionNotify")
                                           .doc(document.id)
                                           .delete()
-                                          .then(
-                                              (value) => print("User Deleted"))
-                                          .catchError((error) => print(
-                                              "Failed to delete user: $error"));
+                                          .then((value) {
+                                        print("บันทึกข้อมูลยาสำเร็จ");
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                              content: Text(
+                                            'ลบรายการสำเร็จ ',
+                                            style: TextStyle(
+                                              fontFamily: 'Prompt',
+                                              fontSize: 18,
+                                            ),
+                                          )),
+                                        );
+                                        // Navigator.pop(context);
+                                      }).catchError((error) => print(
+                                              "Failed to add user: $error"));
+                                      // .then(
+                                      //     (value) => print("User Deleted"))
+                                      // .catchError((error) => print(
+                                      //     "Failed to delete user: $error"));
                                     },
                                   ),
                                 ),

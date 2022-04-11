@@ -289,7 +289,7 @@ class _PageSetTimeState extends State<PageSetTime> {
                                 style: TextStyle(
                                   fontFamily: 'Prompt',
                                   fontSize: 18,
-                                  color: Color.fromARGB(255, 255, 255, 255),
+                                  color: Color.fromARGB(255, 2, 2, 2),
                                 ),
                               ),
                               style: ElevatedButton.styleFrom(
