@@ -87,7 +87,7 @@ class _PageLoginState extends State<PageLogin> {
                           }), ModalRoute.withName('/'));
                         },
                         child: Text(
-                          "LOGOUT",
+                          "ออกจากระบบ",
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'Prompt',
