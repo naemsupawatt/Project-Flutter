@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: ("Medicine Usage with QR Code"),
-      home: Menu(), // ให้หน้า Menu เป็นหน้าแรก
+      home: SplashScreen(), // ให้หน้า Menu เป็นหน้าแรก
       theme: ThemeData(primarySwatch: Colors.green),
     );
   }
@@ -102,20 +102,6 @@ class _homeState extends State<Menu> {
             user.displayName, user.email, user.photoURL, user.uid);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => MyApp()));
-      }
-    });
-    //เช็ค User ว่าได้เข้าสู่ระบบแล้วยัง
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user == null) {
-        print('User is currently signed out!');
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => AccountPage()));
-      } else {
-        print('User is signed in!');
-        splashscreenSignedin(
-            user.displayName, user.email, user.photoURL, user.uid);
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => RootApp()));
       }
     });
   }
