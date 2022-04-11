@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: ("Medicine Usage with QR Code"),
-      home: SplashScreen(), // ให้หน้า Menu เป็นหน้าแรก
+      home: Menu(), // ให้หน้า Menu เป็นหน้าแรก
       theme: ThemeData(primarySwatch: Colors.green),
     );
   }
@@ -95,13 +95,13 @@ class _homeState extends State<Menu> {
       if (user == null) {
         print('User is currently signed out!');
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => RootApp()));
+            context, MaterialPageRoute(builder: (context) => AccountPage()));
       } else {
         print('User is signed in!');
         splashscreenSignedin(
             user.displayName, user.email, user.photoURL, user.uid);
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => MyApp()));
+            context, MaterialPageRoute(builder: (context) => RootApp()));
       }
     });
   }
