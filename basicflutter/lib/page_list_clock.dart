@@ -155,14 +155,17 @@ class _PageListClockState extends State<PageListClock> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => PageSetTime()));
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-        backgroundColor: Color.fromRGBO(30, 194, 165, 1),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 50),
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => PageSetTime()));
+          },
+          tooltip: 'Increment',
+          child: const Icon(Icons.add),
+          backgroundColor: Color.fromRGBO(30, 194, 165, 1),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

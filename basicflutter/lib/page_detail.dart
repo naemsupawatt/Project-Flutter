@@ -80,23 +80,16 @@ class _PageDetailState extends State<PageDetail> {
                         child: Column(
                           children: [
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  "ชื่อยาสามัญ",
+                                  "ชื่อยาสามัญ : ",
                                   style: TextStyle(
                                       fontFamily: 'Prompt',
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
                                       color: Color.fromRGBO(57, 137, 123, 1)),
                                 ),
-                              ],
-                            ),
-                            Divider(
-                              color: Colors.grey,
-                            ),
-                            Row(
-                              children: [
                                 Flexible(
                                   child: Text(
                                     data["details"]["medicineGeneric"],
@@ -110,37 +103,20 @@ class _PageDetailState extends State<PageDetail> {
                                 )
                               ],
                             ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Color.fromRGBO(186, 186, 186, 1))),
-                        padding: EdgeInsets.all(8),
-                        child: Column(
-                          children: [
+                            SizedBox(
+                              height: 10,
+                            ),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  "รูปแบบยา",
+                                  "รูปแบบยา : ",
                                   style: TextStyle(
                                       fontFamily: 'Prompt',
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
                                       color: Color.fromRGBO(57, 137, 123, 1)),
                                 ),
-                              ],
-                            ),
-                            Divider(
-                              color: Colors.grey,
-                            ),
-                            Row(
-                              children: [
                                 Flexible(
                                   child: Text(
                                     data["details"]["medicineType"],
