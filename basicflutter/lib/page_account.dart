@@ -36,14 +36,88 @@ class _AccountPageState extends State<AccountPage> {
         backgroundColor: Color.fromRGBO(30, 194, 165, 100),
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(50, 200, 50, 0),
+        padding: const EdgeInsets.all(40),
         child: SingleChildScrollView(
           //ป้องกัน button overflow
           child: Column(
             children: [
-              //
               SizedBox(
-                height: 40,
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/profile-user.png',
+                    height: 49,
+                    width: 49,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              //Text Email
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Email',
+                ),
+              ),
+              //Text Password
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Password',
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  icon: Icon(
+                    Icons.login,
+                    color: Colors.white,
+                  ),
+                  label: Text("LOGIN",
+                      style: TextStyle(fontSize: 16, color: Colors.white)),
+                  onPressed: () {
+                    // Navigator.push(
+                    //     context, //ลิ้งไปยังหน้าต่อไปยังหน้า PageLogin
+                    //     MaterialPageRoute(builder: (context) {
+                    //   return PageLogin();
+                    // }));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(30, 194, 165, 100),
+                      minimumSize: Size(222, 48)),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text("Create account",
+                  style: TextStyle(
+                    color: Color.fromRGBO(19, 143, 121, 1),
+                    decoration: TextDecoration.underline,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Prompt',
+                    fontSize: 14,
+                  )),
+              SizedBox(
+                height: 10,
+              ),
+              Text("OR",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 95, 95, 95),
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Prompt',
+                    fontSize: 12,
+                  )),
+              SizedBox(
+                height: 10,
               ),
               SizedBox(
                 width: double.infinity,
@@ -56,11 +130,11 @@ class _AccountPageState extends State<AccountPage> {
                         "image/logo_google.png",
                         width: 30,
                       ),
-                      Text("...."),
+                      Text("....."),
                       Text("Sign in with Google",
                           style: TextStyle(
                             color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w600,
                             fontFamily: 'Prompt',
                             fontSize: 14,
                           )),
