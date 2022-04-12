@@ -66,6 +66,7 @@ class _AccountPageState extends State<AccountPage> {
               ),
               //Text Password
               TextFormField(
+                obscureText: true,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'Password',
