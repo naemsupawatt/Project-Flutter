@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 60,
+                    height: 65,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,12 +43,12 @@ class _HomeState extends State<Home> {
                         height: 50,
                         //color: Colors.black.withOpacity(.4),
                       ),
-                      InkWell(
-                        onTap: () => Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => QrPage())),
-                        child: Icon(Icons.qr_code_scanner,
-                            size: 35, color: Color.fromRGBO(22, 150, 127, 1)),
-                      ),
+                      // InkWell(
+                      //   onTap: () => Navigator.push(context,
+                      //       MaterialPageRoute(builder: (context) => QrPage())),
+                      //   child: Icon(Icons.qr_code_scanner,
+                      //       size: 35, color: Color.fromRGBO(22, 150, 127, 1)),
+                      // ),
                     ],
                   ),
                   SizedBox(
@@ -58,6 +58,74 @@ class _HomeState extends State<Home> {
                     children: [
                       Row(
                         children: [
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Color.fromRGBO(30, 194, 165, 1),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              height: 148,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: 10, bottom: 10, top: 15),
+                                child: InkWell(
+                                  onTap: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => QrPage())),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 5),
+                                        child: Image.asset(
+                                          'assets/qr.png',
+                                          fit: BoxFit.cover,
+                                          height: 45,
+                                          width: 45,
+                                        ),
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "สแกนคิวอาร์โค้ด",
+                                            style: TextStyle(
+                                              color: Color.fromRGBO(
+                                                  22, 150, 127, 1),
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Prompt',
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                          Text(
+                                            "ซองยา",
+                                            style: TextStyle(
+                                              color: Color.fromRGBO(
+                                                  22, 150, 127, 1),
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Prompt',
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
                           Expanded(
                             child: Container(
                               decoration: BoxDecoration(
@@ -90,6 +158,59 @@ class _HomeState extends State<Home> {
                                       ),
                                       Text(
                                         "ตั้งค่าเตือนการใช้ยา",
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(22, 150, 127, 1),
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Prompt',
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: InkWell(
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          PageAboutMedicine())),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Color.fromRGBO(30, 194, 165, 1),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                height: 148,
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 10, bottom: 10, top: 5),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Image.asset(
+                                        'assets/logo3.png',
+                                        fit: BoxFit.cover,
+                                        height: 56,
+                                      ),
+                                      Text(
+                                        "สาระเกี่ยวกับยา",
                                         style: TextStyle(
                                           color:
                                               Color.fromRGBO(22, 150, 127, 1),
@@ -160,55 +281,6 @@ class _HomeState extends State<Home> {
                       Row(
                         children: [
                           Expanded(
-                            child: InkWell(
-                              onTap: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          PageAboutMedicine())),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Color.fromRGBO(30, 194, 165, 1),
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                height: 148,
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 10, bottom: 10, top: 5),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Image.asset(
-                                        'assets/logo3.png',
-                                        fit: BoxFit.cover,
-                                        height: 56,
-                                      ),
-                                      Text(
-                                        "สาระเกี่ยวกับยา",
-                                        style: TextStyle(
-                                          color:
-                                              Color.fromRGBO(22, 150, 127, 1),
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'Prompt',
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Expanded(
                             child: GestureDetector(
                               onTap: () => {launch("tel://1669")},
                               child: Container(
@@ -248,9 +320,12 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                             ),
-                          )
+                          ),
+                          Expanded(
+                            child: Text(""),
+                          ),
                         ],
-                      )
+                      ),
                     ],
                   )
                 ],
