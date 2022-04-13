@@ -173,7 +173,7 @@ class _AccountPageState extends State<AccountPage> {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return PageLogin();
+                                      return RootApp();
                                     },
                                   ),
                                 );

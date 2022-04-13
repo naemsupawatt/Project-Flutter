@@ -1,3 +1,4 @@
+import 'package:basicflutter/googleauth.dart';
 import 'package:basicflutter/home.dart';
 import 'package:basicflutter/page_root_app.dart';
 import 'package:basicflutter/page_account.dart';
@@ -22,13 +23,13 @@ class RootApp extends StatefulWidget {
 }
 
 class _RootAppState extends State<RootApp> {
+  final FirebaseFirestore UserCollection = FirebaseFirestore.instance;
   final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     LocalNotificationService.initilize();
-    getTokenNotify();
     // Terminated State
     FirebaseMessaging.instance.getInitialMessage().then((event) {
       if (event != null) {
@@ -46,11 +47,19 @@ class _RootAppState extends State<RootApp> {
     FirebaseMessaging.onMessageOpenedApp.listen((event) {
       print(event);
     });
+    getTokenNotify();
   }
 
   void getTokenNotify() async {
     String? token = await firebaseMessaging.getToken();
     print(token);
+    UserCollection.collection('Users')
+        .doc(userid)
+        .update({
+          "tokenNotify": token,
+        })
+        .then((value) {})
+        .catchError((error) => print("Failed to add user: $error"));
   }
 
   int index = 0;
